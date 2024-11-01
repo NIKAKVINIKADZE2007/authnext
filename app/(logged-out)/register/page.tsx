@@ -147,7 +147,14 @@ export default function RegisterPage() {
             </FormProvider>
           </CardContent>
           <CardFooter>
-            <p>Card Footer</p>
+            <div className=''>
+              <div className='text-sm text-muted-foreground'>
+                Already have an account?{' '}
+                <Link className='underline' href='/login'>
+                  Resiter
+                </Link>
+              </div>
+            </div>
           </CardFooter>
         </Card>
       )}

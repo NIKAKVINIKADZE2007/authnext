@@ -120,7 +120,18 @@ export default function login() {
           </FormProvider>
         </CardContent>
         <CardFooter>
-          <p>Card Footer</p>
+          <div className=''>
+            <div className='text-sm text-muted-foreground'>
+              Dont have an account?{' '}
+              <Link className='underline' href='/register'>
+                Resiter
+              </Link>
+            </div>
+            <div className='text-sm text-muted-foreground'>
+              Forgot your password?{' '}
+              <Link href={'/reset-password'}>Reset password</Link>
+            </div>
+          </div>
         </CardFooter>
       </Card>
     </main>

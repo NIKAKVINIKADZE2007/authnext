@@ -25,23 +25,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-
   return (
     <html lang='en'>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div>
-          {session?.user?.email ? (
-            <div>
-              {session?.user?.email}
-              <LogoutButton />
-            </div>
-          ) : (
-            'no curent logged user'
-          )}
-        </div>
         {children}
       </body>
     </html>
