@@ -26,6 +26,9 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { passwordSchema } from '@/validation/passwordSchema';
 import { passwordMatchSchema } from '@/validation/passwordMatchSchema';
+import { changePassword } from './actions';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z
   .object({
@@ -34,16 +37,40 @@ const formSchema = z
   .and(passwordMatchSchema);
 
 export default function ChangePasswordForm() {
+  const router = useRouter();
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       password: '',
+      currentPassword: '',
+      passwordConfirm: '',
     },
   });
 
   // console.log(form);
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {};
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    const response = await changePassword({
+      currentPassword: data.currentPassword,
+      password: data.password,
+      passwordConfirm: data.passwordConfirm,
+    });
+
+    if (response?.error) {
+      form.setError('root', {
+        message: response.message,
+      });
+    } else {
+      toast({
+        title: 'Password Changed',
+        description: 'Your password has been updated',
+        className: 'bg-green-500 text-white',
+      });
+      form.reset();
+    }
+  };
 
   return (
     <FormProvider {...form}>

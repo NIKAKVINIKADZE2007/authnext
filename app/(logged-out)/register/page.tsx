@@ -151,7 +151,7 @@ export default function RegisterPage() {
               <div className='text-sm text-muted-foreground'>
                 Already have an account?{' '}
                 <Link className='underline' href='/login'>
-                  Resiter
+                  Login
                 </Link>
               </div>
             </div>

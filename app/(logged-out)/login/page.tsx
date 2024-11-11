@@ -124,12 +124,12 @@ export default function login() {
             <div className='text-sm text-muted-foreground'>
               Dont have an account?{' '}
               <Link className='underline' href='/register'>
-                Resiter
+                Register
               </Link>
             </div>
             <div className='text-sm text-muted-foreground'>
               Forgot your password?{' '}
-              <Link href={'/reset-password'}>Reset password</Link>
+              <Link href={'/password-reset'}>Reset password</Link>
             </div>
           </div>
         </CardFooter>
